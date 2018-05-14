@@ -22,5 +22,5 @@ for obj in $(find "$TREE" -name '*.o'); do
 		continue
 	fi
 
-	$OBJDUMP -dr $obj | ./objtool.awk
+	$OBJDUMP -dr $obj | ./objtool.awk -v verbose=$verbose
 done
