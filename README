@@ -1,0 +1,10 @@
+Direct usage:
+
+  objtool input.o
+
+Loop over all kernel objects in a given path:
+
+  loop <path>
+
+Note that "loop" will use binutils-s390x-linux-gnu's objdump if
+installed, otherwise the ordinary local version.

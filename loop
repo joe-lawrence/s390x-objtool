@@ -1,0 +1,22 @@
+#!/bin/bash
+
+TREE="$1"
+
+# Use binutils-s390x-linux-gnu if present, otherwise local objdump
+if [[ -e /usr/s390x-linux-gnu/bin/objdump ]] ; then
+	OBJDUMP=/usr/s390x-linux-gnu/bin/objdump
+else
+	OBJDUMP=$(which objdump)
+fi
+
+# Run over the entire tree, prune some directory paths we're not interested in
+for obj in $(find "$TREE" -path "$TREE"/samples -prune -o -path "$TREE"/scripts -prune -o -name '*.o' -print); do
+
+	# skip vmlinux.o
+	[[ "$obj" == "./vmlinux.o" ]] && continue
+
+	# skip built-in.o's
+	[[ $(basename "$obj") == "built-in.o" ]] && continue
+
+	$OBJDUMP -dr $obj | ./objtool.awk
+done
