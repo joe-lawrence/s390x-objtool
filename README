@@ -1,10 +1,11 @@
 Direct usage:
 
   objtool input.o
+  objtool -dr input.o | ./objtool.awk
 
-Loop over all kernel objects in a given path:
+Loop over all kernel objects under a given path:
 
   loop <path>
 
-Note that "loop" will use binutils-s390x-linux-gnu's objdump if
-installed, otherwise the ordinary local version.
+Note that "loop" will use binutils-s390x-linux-gnu's objdump (available in EPEL
+https://fedoraproject.org/wiki/EPEL) if installed, otherwise the local version.
