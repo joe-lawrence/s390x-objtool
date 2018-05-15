@@ -17,6 +17,7 @@ for obj in $(find "$TREE" -name '*.o'); do
 	   [[ "$obj" =~ vmlinux.o ]] ||
 	   [[ "$obj" =~ built-in.o ]] ||
 	   [[ "$obj" =~ \/arch/.*/boot\/ ]] ||
+	   [[ "$obj" =~ \/arch/s390/purgatory\/ ]] ||
 	   [[ "$obj" =~ \/scripts\/ ]] ||
 	   [[ "$obj" =~ \/samples\/ ]] ; then
 		continue
