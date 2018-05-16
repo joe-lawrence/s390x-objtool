@@ -14,7 +14,7 @@ function clear_function_vars() {
 
 function print_function_report()
 {
-	if (function_name && (verbose || function_report)) {
+	if (function_name && function_text && (verbose || function_report)) {
 		printf("%s :: %s()\n", file_name, function_name)
 		printf("%s\n", function_text)
 		printf("\n")
